@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Header from 'components/common/Header';
+import JobSiteType from 'components/jobSearching/JobSiteType';
+import JobSearching from 'components/jobSearching/JobSearching';
+
+import * as Style from 'assets/styleComponents/common/common';
+import 'assets/css/default.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Header />
+            <Style.Container>
+                <JobSiteType></JobSiteType>
+                <JobSearching></JobSearching>
+            </Style.Container>
+        </>
+    );
 }
 
 export default App;
