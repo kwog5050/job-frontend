@@ -13,6 +13,9 @@ const Header = () => {
 
                     <ul>
                         <li>
+                            <Link to="/search/all">검색</Link>
+                        </li>
+                        <li>
                             <Link to="/login">로그인</Link>
                         </li>
                         <li>
@@ -33,7 +36,7 @@ const Head = styled.header`
         a {
             font-family: 'OKDDUNG';
             font-size: 40px;
-            color: #19dc0c;
+            color: #5200ff66;
         }
     }
     ul {

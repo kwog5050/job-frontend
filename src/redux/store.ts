@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import jobSearchReducer from './slice/jobSearchingSlice';
+import jobSearchReducer from './slice/job/jobSearchingSlice';
+import saraminSearchReducer from './slice/job/jobSearchingSlice';
+import searchType from './slice/job/searchTypeSlice';
 
 const store = configureStore({
-    reducer: { jobSearchReducer },
+    reducer: { saraminSearchReducer, jobSearchReducer, searchType },
 });
 
 export type AppDispatch = typeof store.dispatch;

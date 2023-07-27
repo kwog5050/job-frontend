@@ -1,36 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { useAppSelector } from 'redux/hook';
 
 const JobSiteType = () => {
-    const nav = useNavigate();
-    const location = useLocation();
-    const [urlNumber, setUrlNumber] = useState(0);
-
-    const urlCheck = () => {
-        if (location.pathname === '/') {
-            setUrlNumber(0);
-        } else if (location.pathname === '/saramin') {
-            setUrlNumber(1);
-        } else if (location.pathname === '/jabkorea') {
-            setUrlNumber(2);
-        }
-    };
-
-    useEffect(() => {
-        urlCheck();
-    }, [nav]);
+    const jobSearchType = useAppSelector((state) => state.searchType.searchType);
 
     return (
         <Ul>
-            <li className={urlNumber === 0 ? 'on' : ''}>
-                <Link to="/">통합검색</Link>
+            <li className={jobSearchType === 'all' ? 'on' : ''}>
+                <Link to="/search/all">통합검색</Link>
             </li>
-            <li className={urlNumber === 1 ? 'on' : ''}>
-                <Link to="/saramin">사람인</Link>
+            <li className={jobSearchType === 'saramin' ? 'on' : ''}>
+                <Link to="/search/saramin">사람인</Link>
             </li>
-            <li className={urlNumber === 2 ? 'on' : ''}>
-                <Link to="/jabkorea">잡코리아</Link>
+            <li className={jobSearchType === 'jobkorea' ? 'on' : ''}>
+                <Link to="/search/jobkorea">잡코리아</Link>
             </li>
         </Ul>
     );
@@ -56,7 +41,7 @@ const Ul = styled.ul`
         }
     }
     li.on {
-        background-color: #19dc0c;
+        background-color: #5200ff66;
         a {
             color: #fff;
         }
