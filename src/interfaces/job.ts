@@ -1,4 +1,10 @@
+export interface Keyword {
+    keyword: string;
+    page: number;
+}
+
 export interface JobData {
+    view: boolean;
     siteName: string;
     companyName: string;
     title: string;
@@ -13,8 +19,13 @@ export interface JobData {
     };
 }
 
+export interface CrawlingData {
+    pagination: number[];
+    searchList: JobData[];
+}
+
 export interface JobSlice {
     isLoading: boolean;
     error: string | undefined;
-    searchingList: JobData[] | undefined;
+    crawlingData: CrawlingData;
 }

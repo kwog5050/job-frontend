@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 
-import { JobData, JobSlice } from 'interfaces/job';
+import { CrawlingData, JobSlice } from 'interfaces/job';
 
 import { getAllList, getJobkoreaList, getSaraminList } from 'apis/job';
 
 const initialState: JobSlice = {
     isLoading: false,
     error: undefined,
-    searchingList: undefined,
+    crawlingData: { pagination: [], searchList: [] },
 };
 
 export const getSaraminJobList = createAsyncThunk('search/saramin', async (data: any): Promise<any> => {
@@ -31,55 +31,55 @@ export const jobSearchingSlice = createSlice({
     initialState,
     reducers: {
         reset: (state) => {
-            state.searchingList = undefined;
+            state.crawlingData = { pagination: [], searchList: [] };
         },
     },
     extraReducers: (builder) => {
         // 사람인
         builder.addCase(getSaraminJobList.pending, (state) => {
             state.isLoading = true;
-            state.searchingList = undefined;
+            state.crawlingData = { pagination: [], searchList: [] };
             state.error = undefined;
         });
-        builder.addCase(getSaraminJobList.fulfilled, (state, action: PayloadAction<Array<JobData>>) => {
+        builder.addCase(getSaraminJobList.fulfilled, (state, action: PayloadAction<CrawlingData>) => {
             state.isLoading = false;
-            state.searchingList = action.payload;
+            state.crawlingData = action.payload;
         });
         builder.addCase(getSaraminJobList.rejected, (state, action) => {
             state.isLoading = false;
-            state.searchingList = undefined;
+            state.crawlingData = { pagination: [], searchList: [] };
             state.error = action.error.message;
         });
 
         // 잡코리아
         builder.addCase(getJobkoreaJobList.pending, (state) => {
             state.isLoading = true;
-            state.searchingList = undefined;
+            state.crawlingData = { pagination: [], searchList: [] };
             state.error = undefined;
         });
-        builder.addCase(getJobkoreaJobList.fulfilled, (state, action: PayloadAction<Array<JobData>>) => {
+        builder.addCase(getJobkoreaJobList.fulfilled, (state, action: PayloadAction<CrawlingData>) => {
             state.isLoading = false;
-            state.searchingList = action.payload;
+            state.crawlingData = action.payload;
         });
         builder.addCase(getJobkoreaJobList.rejected, (state, action) => {
             state.isLoading = false;
-            state.searchingList = undefined;
+            state.crawlingData = { pagination: [], searchList: [] };
             state.error = action.error.message;
         });
 
         // 통합
         builder.addCase(getAllJobList.pending, (state) => {
             state.isLoading = true;
-            state.searchingList = undefined;
+            state.crawlingData = { pagination: [], searchList: [] };
             state.error = undefined;
         });
-        builder.addCase(getAllJobList.fulfilled, (state, action: PayloadAction<Array<JobData>>) => {
+        builder.addCase(getAllJobList.fulfilled, (state, action: PayloadAction<CrawlingData>) => {
             state.isLoading = false;
-            state.searchingList = action.payload;
+            state.crawlingData = action.payload;
         });
         builder.addCase(getAllJobList.rejected, (state, action) => {
             state.isLoading = false;
-            state.searchingList = undefined;
+            state.crawlingData = { pagination: [], searchList: [] };
             state.error = action.error.message;
         });
     },
