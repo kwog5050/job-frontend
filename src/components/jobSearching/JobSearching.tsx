@@ -40,6 +40,8 @@ const JobSearching = () => {
 
         if (searchParams.get('keyword') === null) {
             nav(`?keyword=${keywordQuery}&page=${pageQuery}`);
+        } else if (searchParams.get('keyword') !== keyword) {
+            nav(`?keyword=${keyword}&page=1`);
         }
 
         switch (jobSearchType) {

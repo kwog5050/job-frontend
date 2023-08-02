@@ -11,7 +11,7 @@ const Header = () => {
                         <Link to="/">내일자리</Link>
                     </h1>
 
-                    <ul>
+                    {/* <ul>
                         <li>
                             <Link to="/search/all">검색</Link>
                         </li>
@@ -21,7 +21,7 @@ const Header = () => {
                         <li>
                             <Link to="/signup">회원가입</Link>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
         </Head>
