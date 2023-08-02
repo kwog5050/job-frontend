@@ -6,6 +6,7 @@
 > 1. apis 통신 코드 모음
 >> axios.ts 
 >> baseUrl 설정
+
     const instance = axios.create({
         baseURL: `${process.env.REACT_APP_API_URL}`,
     });
